@@ -12,6 +12,7 @@ import StarRateIcon from "@mui/icons-material/StarRate";
 import IconButton from "@mui/material/IconButton";
 import Grid from "@mui/material/Grid";
 import img from '../../images/film-poster-placeholder.png'
+import { Link } from "react-router-dom";
 
 // 导出组件便于使用
 export default function MovieCard(props) {
@@ -56,9 +57,14 @@ export default function MovieCard(props) {
                 </IconButton>
                 {/* 提供更多电影信息的内容 */}
                 <Button variant="outlined" size="medium" color="primary">
-                    More Info ...
+                    <Link to={`/movies/${movie.id}`}>
+                        <Button variant="outlined" size="medium" color="primary">
+                            More Info ...
+                        </Button>
+                    </Link>
                 </Button>
             </CardActions>
         </Card>
+
     );
 }
