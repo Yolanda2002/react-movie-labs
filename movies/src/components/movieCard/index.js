@@ -13,15 +13,34 @@ import IconButton from "@mui/material/IconButton";
 import Grid from "@mui/material/Grid";
 import img from '../../images/film-poster-placeholder.png'
 import { Link } from "react-router-dom";
+import Avatar from '@mui/material/Avatar';
 
 // 导出组件便于使用
 export default function MovieCard(props) {
     const movie = props.movie;
+    const handleAddToFavorite = (e) => {
+        e.preventDefault();
+        props.selectFavorite(movie.id);
+    };
+
     return (
         //电影卡片外部容器
         <Card sx={{ maxWidth: 345 }}>
             {/* 电影标题 */}
-            <CardHeader title={movie.title} />
+            <CardHeader
+                avatar={
+                    movie.favorite ? (
+                        <Avatar sx={{ backgroundColor: 'red' }}>
+                            <FavoriteIcon />
+                        </Avatar>
+                    ) : null
+                }
+                title={
+                    <Typography variant="h5" component="p">
+                        {movie.title}{" "}
+                    </Typography>
+                }
+            />
             {/* 电影的海报，如果path存在则加载海报，不然使用占位图像 */}
             <CardMedia
                 sx={{ height: 500 }}
@@ -52,7 +71,7 @@ export default function MovieCard(props) {
             {/* 卡片操作部分 */}
             <CardActions disableSpacing>
                 {/* 包含收藏按钮，目前为空 */}
-                <IconButton aria-label="add to favorites" onClick={null}>
+                <IconButton aria-label="add to favorites" onClick={handleAddToFavorite}>
                     <FavoriteIcon color="primary" fontSize="large" />
                 </IconButton>
                 {/* 提供更多电影信息的内容 */}
