@@ -11,6 +11,7 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import img from '../../images/pexels-dziana-hasanbekava-5480827.jpg'
 
+// 定义按类型搜索表单控件的样式
 const formControl = 
   {
     margin: 1,
@@ -20,6 +21,7 @@ const formControl =
 
 export default function FilterMoviesCard(props) {
 
+    // 局部数组，包含三种电影类型
   const genres = [
     {id: 1, name: "Animation"},
     {id: 2, name: "Comedy"},
@@ -27,17 +29,22 @@ export default function FilterMoviesCard(props) {
   ]
 
   return (
+    // 卡片组件
     <Card 
       sx={{
         maxWidth: 345,
         backgroundColor: "rgb(204, 204, 0)"
       }} 
       variant="outlined">
+
       <CardContent>
+
         <Typography variant="h5" component="h1">
+            {/* 搜索图标 */}
           <SearchIcon fontSize="large" />
           Filter the movies.
         </Typography>
+        {/* 允许搜索关键词 */}
         <TextField
           sx={{...formControl}}
           id="filled-search"
@@ -45,12 +52,14 @@ export default function FilterMoviesCard(props) {
           type="search"
           variant="filled"
         />
+        {/* 下拉选择器，每个类型是一个MenuItem，由genres数组动态映射 */}
         <FormControl sx={{...formControl}}>
           <InputLabel id="genre-label">Genre</InputLabel>
           <Select
             labelId="genre-label"
             id="genre-select"
           >
+            {/* 动态映射数组 */}
             {genres.map((genre) => {
               return (
                 <MenuItem key={genre.id} value={genre.id}>
@@ -61,11 +70,13 @@ export default function FilterMoviesCard(props) {
           </Select>
         </FormControl>
       </CardContent>
+      {/* 导入图片 */}
       <CardMedia
         sx={{ height: 300 }}
         image={img}
         title="Filter"
       />
+
       <CardContent>
         <Typography variant="h5" component="h1">
           <SearchIcon fontSize="large" />

@@ -93,12 +93,8 @@ const images = [
 
 const movies = [sample, sample, sample, sample, sample, sample, sample];
 
-//注释掉便于更改界面
-// const App = () => {
-//   return (
-//       <HomePage movies={movies} />
-//   );
-// };
+// 注释掉便于更改界面
+// const App
 
 const App = () => {
   return (
