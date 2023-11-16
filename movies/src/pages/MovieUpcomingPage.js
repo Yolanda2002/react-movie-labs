@@ -5,6 +5,7 @@ import { useQuery } from 'react-query';
 import Spinner from '../components/spinner';
 import AddToPlayListIcon from '../components/cardIcons/addToPlaylist'
 
+//Changes made ahead of time
 const UpcomingPage = (props) => {
   const { data, error, isLoading, isError } = useQuery('upcoming', getUpcoming)
 
